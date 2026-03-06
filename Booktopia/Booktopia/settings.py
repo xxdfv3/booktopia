@@ -80,23 +80,14 @@ WSGI_APPLICATION = 'Booktopia.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': os.getenv('MONGODB_DB'),  # имя вашей БД
-        'ENFORCE_SCHEMA': False,  # важно для MongoDB
+        'NAME': os.getenv('MONGODB_DB'),
+        'ENFORCE_SCHEMA': False,
         'CLIENT': {
             'host': os.getenv('MONGODB_URI')
         }
     }
 }
 
-# Проверка подключения к MongoDB
-try:
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=5000)
-    client.server_info()  # Проверка подключения
-    db = client[MONGODB_DB]
-    print(f"✓ MongoDB connected: {MONGODB_DB}")
-except Exception as e:
-    print(f"⚠️  MongoDB connection warning: {e}")
-    db = None
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
