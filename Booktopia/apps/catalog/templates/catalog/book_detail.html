@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ book.title }} - Booktopia{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">{{ book.title }}</h1>
+
+<div class="card">
+    <div class="card-body">
+        <p class="text-muted"><strong>Автор:</strong> {{ book.author }}</p>
+        <p><strong>Цена:</strong> {{ book.price }} ₽</p>
+        <p><strong>Год издания:</strong> {{ book.published_year|default:"Не указан" }}</p>
+        <p><strong>Описание:</strong></p>
+        <p>{{ book.description|default:"Нет описания" }}</p>
+        <p><strong>Дата добавления:</strong> {{ book.created_at|date:"d.m.Y H:i" }}</p>
+        
+        <a href="{% url 'catalog:book-list' %}" class="btn btn-secondary">Назад к списку</a>
+    </div>
+</div>
+{% endblock %}

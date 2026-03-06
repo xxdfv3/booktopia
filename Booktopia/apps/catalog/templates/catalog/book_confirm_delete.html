@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Удалить книгу - Booktopia{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Удалить книгу</h1>
+
+<div class="alert alert-warning">
+    <p>Вы уверены, что хотите удалить книгу "<strong>{{ book.title }}</strong>"?</p>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Да, удалить</button>
+    <a href="{% url 'catalog:book-list' %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

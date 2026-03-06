@@ -22,7 +22,7 @@ load_dotenv()
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-dev-key-for-testing-only')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,24 +79,10 @@ WSGI_APPLICATION = 'Booktopia.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': os.getenv('MONGODB_DB'),  # имя вашей БД
-        'ENFORCE_SCHEMA': False,  # важно для MongoDB
-        'CLIENT': {
-            'host': os.getenv('MONGODB_URI')
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-# Проверка подключения к MongoDB
-try:
-    client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=5000)
-    client.server_info()  # Проверка подключения
-    db = client[MONGODB_DB]
-    print(f"✓ MongoDB connected: {MONGODB_DB}")
-except Exception as e:
-    print(f"⚠️  MongoDB connection warning: {e}")
-    db = None
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators

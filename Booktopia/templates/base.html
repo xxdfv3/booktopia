@@ -53,7 +53,7 @@
 
                     <!-- Корзина -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cart:cart-detail' %}">
+                        <a class="nav-link" href="#">
                             <i class="bi bi-cart3"></i> Корзина
                             <span class="badge bg-warning text-dark">0</span>
                         </a>
@@ -66,20 +66,20 @@
                                 <i class="bi bi-person-circle"></i> {{ user.username }}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">Профиль</a></li>
-                                <li><a class="dropdown-item" href="{% url 'orders:order-list' %}">Заказы</a></li>
+                                <li><a class="dropdown-item" href="#">Профиль</a></li>
+                                <li><a class="dropdown-item" href="#">Заказы</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Выйти</a></li>
+                                <li><a class="dropdown-item" href="#">Выйти</a></li>
                             </ul>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:login' %}">
+                            <a class="nav-link" href="#">
                                 <i class="bi bi-box-arrow-in-right"></i> Войти
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:register' %}">
+                            <a class="nav-link" href="#">
                                 <i class="bi bi-person-plus"></i> Регистрация
                             </a>
                         </li>
