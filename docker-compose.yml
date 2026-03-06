@@ -1,0 +1,14 @@
+services:
+  mongo:
+    image: mongo:8.2
+    container_name: booktopia_db
+    ports:
+      - "27018:27017"
+    volumes:
+      - booktopia_mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=localpass
+
+volumes:
+  booktopia_mongo_data:

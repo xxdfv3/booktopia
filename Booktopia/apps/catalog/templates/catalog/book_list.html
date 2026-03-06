@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Каталог книг - Booktopia{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Каталог книг</h1>
+
+<div class="row">
+    {% for book in books %}
+    <div class="col-md-3 mb-4">
+        <div class="card book-card h-100">
+            <img src="{{ book.cover.url }}" class="card-img-top book-cover" alt="{{ book.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <p class="card-text text-muted">{{ book.author }}</p>
+                <p class="price">{{ book.price }} ₽</p>
+                <a href="{% url 'catalog:book-detail' book.pk %}" class="btn btn-primary">
+                    Подробнее
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
